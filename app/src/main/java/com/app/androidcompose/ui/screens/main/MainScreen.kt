@@ -19,7 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import leegroup.modul.sample.ui.SampleDestination
+import leegroup.module.alarm.ui.AlarmDestination
 import leegroup.module.photosample.ui.screens.main.PhotoDestination
 import leegroup.module.sample.gituser.ui.screens.GitUserDestination
 
@@ -30,7 +30,7 @@ fun MainScreen(
     val listScreen = listOf(
         GitUserDestination.GitUserRoot,
         PhotoDestination.PhotoList,
-        SampleDestination.SampleScreen,
+        AlarmDestination.SampleScreen,
     )
     LazyColumn(
         modifier = Modifier

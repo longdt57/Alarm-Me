@@ -127,7 +127,7 @@ dependencies {
     implementation(projects.core.coreKtx)
     implementation(projects.gituser)
     implementation(projects.photosample)
-    implementation(projects.sample)
+    implementation(projects.alarm)
 
     // Lifecycle
     implementation(libs.bundles.androidx.lifecycle)
