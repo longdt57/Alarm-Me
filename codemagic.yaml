@@ -1,0 +1,76 @@
+definitions:
+  configure_environment: &configure_environment
+    # This running machine can be changed depends on the billing plan: https://docs.codemagic.io/knowledge-codemagic/machine-type/
+    instance_type: mac_mini_m1
+    max_build_duration: 30
+    environment:
+      groups:
+        - firebase_credentials
+      java: 17
+    cache:
+      cache_paths:
+        - $HOME/.gradle/caches
+  scripts:
+    - &detekt
+      name: Run detekt
+      working_directory: ./
+      script: ./gradlew detekt
+    - &unit_test
+      name: Run unit tests
+      working_directory: ./
+      script: ./gradlew koverHtmlReport
+  artifacts:
+    - &artifacts app/build/reports/kover/
+    - &artifacts_staging_apk app/build/outputs/apk/staging/debug/app-staging-debug.apk
+    - &artifacts_production_apk app/build/outputs/apk/production/debug/app-production-debug.apk
+workflows:
+  unit-test-on-pr:
+    name: Unit test on PR
+    <<: *configure_environment
+    triggering:
+      events:
+        - pull_request
+      branch_patterns:
+        - pattern: '*'
+          source: false
+        - pattern: 'develop'
+          include: false
+        - pattern: 'main'
+          include: false
+      cancel_previous_builds: true
+    scripts:
+      - *detekt
+      - *unit_test
+    artifacts:
+      - *artifacts
+
+  build-and-deploy-staging:
+    name: Build and deploy staging to Firebase App Distribution
+    <<: *configure_environment
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: 'develop'
+    scripts:
+      - *detekt
+      - *unit_test
+      - name: Build APK for staging
+        working_directory: ./
+        script: |
+          ./gradlew assembleStagingRelease -PversionCode=$BUILD_NUMBER
+      - name: Generate release notes with the latest git commit
+        script: |
+          RELEASE_NOTE_CONTENT="$(git log -1 --merges | grep "\[" || echo $(git log -1 --merges --format=%B))"
+          echo "$RELEASE_NOTE_CONTENT" | tee release_notes.txt
+    artifacts:
+      - *artifacts
+      - *artifacts_staging_apk
+    publishing:
+      firebase:
+        firebase_service_account: $FIREBASE_SERVICE_ACCOUNT_CREDENTIALS
+        android:
+          app_id: $FIREBASE_APP_ID_STAGING
+          groups:
+            - android-chapter
+          artifact_type: 'apk'

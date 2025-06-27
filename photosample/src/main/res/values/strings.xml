@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="remove_from_favorites">Remove from favorites</string>
+    <string name="add_to_favorites">Add to favorites</string>
+    <string name="thumbnail_image">Thumbnail Image</string>
+    <string name="photo_list_screen_title">Photos List</string>
+    <string name="photo_list_query_hint">Search…</string>
+    <string name="photo_detail_screen_title">Photos Detail</string>
+    <string name="back">Back</string>
+</resources>

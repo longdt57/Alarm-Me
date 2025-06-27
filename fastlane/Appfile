@@ -1,0 +1,2 @@
+json_key_file("./tools/google-credentials-firebase-distribution.json")
+package_name("com.app.androidcompose.staging")

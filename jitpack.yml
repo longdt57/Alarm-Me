@@ -1,0 +1,18 @@
+jdk:
+  - openjdk17
+
+# id("maven-publish")
+
+# publishing {
+#     publications {
+#         register<MavenPublication>("release") {
+#             groupId = "leegroup.module"
+#             artifactId = "[module_name]"
+#             version = "1.0"
+
+#             afterEvaluate {
+#                 from(components["release"])
+#             }
+#         }
+#     }
+# }
