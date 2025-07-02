@@ -4,9 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.app.androidcompose.ui.screens.navigationbar.BottomNavigationApp
 import dagger.hilt.android.AndroidEntryPoint
+import leegroup.module.alarm.ui.AlarmDestination
+import leegroup.module.alarm.ui.alarmNavGraph
+import leegroup.module.designsystem.theme.ComposeTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -15,8 +18,15 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            leegroup.module.designsystem.theme.ComposeTheme {
-                BottomNavigationApp(navController = rememberNavController())
+            ComposeTheme {
+                val navController = rememberNavController()
+                NavHost(
+                    navController = navController,
+                    route = AlarmDestination.AlarmRoot.destination,
+                    startDestination = AlarmDestination.AlarmScreen.destination,
+                ) {
+                    alarmNavGraph(navController = navController)
+                }
             }
         }
     }

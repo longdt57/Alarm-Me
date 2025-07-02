@@ -1,5 +1,6 @@
 package leegroup.module.designsystem.components
 
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -20,7 +21,8 @@ import leegroup.module.designsystem.R
 fun CenterTopAppBar(
     title: String,
     modifier: Modifier = Modifier,
-    onBack: (() -> Unit)? = null
+    onBack: (() -> Unit)? = null,
+    actions: @Composable RowScope.() -> Unit = {},
 ) {
     CenterAlignedTopAppBar(
         modifier = modifier,
@@ -41,6 +43,7 @@ fun CenterTopAppBar(
                 }
             }
         } ?: {},
+        actions = actions,
     )
 }
 

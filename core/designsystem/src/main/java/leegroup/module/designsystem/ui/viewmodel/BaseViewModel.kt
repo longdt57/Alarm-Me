@@ -7,9 +7,11 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import leegroup.module.designsystem.support.extensions.mapApiError
+import leegroup.module.designsystem.ui.models.BaseDestination
 import leegroup.module.designsystem.ui.models.ErrorModel
 import leegroup.module.designsystem.ui.models.ErrorState
 import leegroup.module.designsystem.ui.models.LoadingState
@@ -67,7 +69,14 @@ abstract class BaseViewModel : ViewModel() {
         _error.tryEmit(ErrorState.None)
     }
 
+    protected fun navigateUp() {
+        _navigator.tryEmit(BaseDestination.Up())
+    }
+
     protected fun <T> Flow<T>.injectLoading(): Flow<T> = this
         .onStart { showLoading() }
         .onCompletion { hideLoading() }
+
+    protected fun <T> Flow<T>.catchError(): Flow<T> = this
+        .catch { handleError(it) }
 }

@@ -14,14 +14,13 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Compose"
+rootProject.name = "Alarm-Me"
 include(":app")
-include(":gituser")
-include(":photosample")
-include(":sample")
+include(":alarm")
 
 include(":core:designsystem")
 include(":core:data")
 include(":test")
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":core:core-ktx")
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
