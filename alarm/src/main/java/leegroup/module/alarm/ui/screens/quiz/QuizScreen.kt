@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -108,7 +109,8 @@ fun QuizScreen(
             Text(
                 text = uiState.alarmTimeDisplay,
                 style = MaterialTheme.typography.headlineMedium,
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                color = Color.White
             )
 
             Spacer(modifier = Modifier.height(12.dp))
@@ -116,7 +118,8 @@ fun QuizScreen(
             Text(
                 text = uiState.alarmLabel,
                 style = MaterialTheme.typography.labelLarge,
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                color = Color.White
             )
 
             Spacer(modifier = Modifier.height(12.dp))
@@ -135,6 +138,7 @@ fun QuizScreen(
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.headlineSmall,
                     text = stringResource(R.string.stop).uppercase(),
+                    color = Color.White
                 )
             }
         }
