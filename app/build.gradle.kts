@@ -125,8 +125,6 @@ dependencies {
     implementation(projects.core.designsystem)
     implementation(projects.core.data)
     implementation(projects.core.coreKtx)
-    implementation(projects.gituser)
-    implementation(projects.photosample)
     implementation(projects.alarm)
 
     // Lifecycle
@@ -201,8 +199,7 @@ dependencies {
     kover(projects.core.designsystem)
     kover(projects.core.data)
     kover(projects.core.coreKtx)
-    kover(projects.gituser)
-    kover(projects.photosample)
+    kover(projects.alarm)
 }
 
 kover {

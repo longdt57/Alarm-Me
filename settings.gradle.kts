@@ -16,8 +16,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Alarm-Me"
 include(":app")
-include(":gituser")
-include(":photosample")
 include(":alarm")
 
 include(":core:designsystem")
