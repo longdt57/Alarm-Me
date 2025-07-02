@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="snooze">Snooze</string>
+    <string name="missed_alarm">Missed Alarm</string>
+    <string name="alarm">Alarm</string>
+    <string name="dismiss">Dimiss</string>
+    <string name="no_alarms">No alarms</string>
+    <string name="delete">Delete</string>
+    <string name="every_weekday">Every weekday</string>
+    <string name="every_weekend">Every weekend</string>
+    <string name="sun">Sun</string>
+    <string name="mon">Mon</string>
+    <string name="tue">Tue</string>
+    <string name="wed">Wed</string>
+    <string name="thu">Thu</string>
+    <string name="fri">Fri</string>
+    <string name="sat">Sat</string>
+    <string name="never">Never</string>
+    <string name="everyday">Everyday</string>
+    <string name="label">Label</string>
+    <string name="optional">Optional</string>
+    <string name="repeat">Repeat</string>
+    <string name="sound">Sound</string>
+    <string name="alarm_me">Alarm Me</string>
+    <string name="setup_alarm">Setup Alarm</string>
+    <string name="save">Save</string>
+    <string name="sunday">Sunday</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="alert_permission_post_notifications_title">Permissions to show notifications</string>
+    <string name="alert_permission_post_notifications_text">To display a popup when the alarm rings, permission to show notifications is required.</string>
+    <string name="allow_notifications_reminders">You must allow the app displaying notifications, else it cannot show reminders.</string>
+    <string name="allow_full_screen_notifications_reminders">You must allow the app displaying full screen notifications, else you may miss some reminders.</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="stop">Stop</string>
+</resources>

@@ -1,14 +1,9 @@
 package leegroup.module.alarm.ui.models
 
 import androidx.compose.runtime.Immutable
-import leegroup.module.alarm.data.models.SampleModel
+import leegroup.module.alarm.data.models.AlarmModel
 
 @Immutable
 internal data class AlarmUiState(
-    val id: Int = 0
-) {
-
-    fun updateSample(sampleModel: SampleModel): AlarmUiState {
-        return copy(id = sampleModel.id)
-    }
-}
+    val alarms: List<AlarmModel> = emptyList()
+)

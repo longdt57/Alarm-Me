@@ -30,7 +30,7 @@ fun MainScreen(
     val listScreen = listOf(
         GitUserDestination.GitUserRoot,
         PhotoDestination.PhotoList,
-        AlarmDestination.SampleScreen,
+        AlarmDestination.AlarmScreen,
     )
     LazyColumn(
         modifier = Modifier

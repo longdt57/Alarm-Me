@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.google.devtools.ksp)
     alias(libs.plugins.serialization)
     alias(libs.plugins.compose)
+    id("kotlin-parcelize")
     alias(libs.plugins.kotlinx.kover)
 }
 
@@ -58,6 +59,7 @@ android {
 dependencies {
 
     implementation(projects.core.designsystem)
+    implementation(projects.core.data)
     implementation(projects.core.coreKtx)
 
     // Lifecycle
