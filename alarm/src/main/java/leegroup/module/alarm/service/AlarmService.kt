@@ -92,8 +92,8 @@ class AlarmService : Service() {
 
         activeAlarmId = alarm.id
 
-        alarmSoundAndVibrateHelper.start(alarm)
         showNotification(alarm)
+        alarmSoundAndVibrateHelper.start(alarm)
         startCountDown(alarm = alarm)
     }
 

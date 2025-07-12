@@ -6,9 +6,9 @@ https://github.com/longdt57/Alarm-Me
 
 ## Screenshots
 
-| Alarm List                                         | Alarm Setup                                         |
-|----------------------------------------------------|-----------------------------------------------------|
-| <img src="screenshots/alarm_list.png" width=300 /> | <img src="screenshots/alarm_setup.png" width=300 /> |
+| Alarm List                                         | Alarm Setup                                         | Alarm Trigger                                         |
+|----------------------------------------------------|-----------------------------------------------------|-------------------------------------------------------|
+| <img src="screenshots/alarm_list.png" width=200 /> | <img src="screenshots/alarm_setup.png" width=200 /> | <img src="screenshots/alarm_trigger.png" width=200 /> |
 
 ## Setup
 
