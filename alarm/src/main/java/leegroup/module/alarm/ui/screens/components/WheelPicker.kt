@@ -99,35 +99,7 @@ internal fun WheelPicker(
 }
 
 
-data class TimePickerState(
-    val hour: Int = 0,
-    val minute: Int = 0,
-    val period: String = AM
-) {
-    companion object {
 
-        fun parseTimeToPickerState(time: String): TimePickerState {
-            return try {
-                val formatter = DateTimeFormatter.ofPattern("HH:mm:ss", Locale.ENGLISH)
-                val parsedTime = LocalTime.parse(time, formatter)
-
-                val hour24 = parsedTime.hour
-                val minute = parsedTime.minute
-                val period = if (hour24 < 12) AM else PM
-
-                val hour12 = when {
-                    hour24 == 0 -> 12
-                    hour24 > 12 -> hour24 - 12
-                    else -> hour24
-                }
-
-                TimePickerState(hour = hour12, minute = minute, period = period)
-            } catch (e: Exception) {
-                TimePickerState() // fallback: 12:00 AM
-            }
-        }
-    }
-}
 
 @Composable
 fun TimePickerWheel(
@@ -213,4 +185,34 @@ fun TimePickerWheel(
             }
     }
 
+}
+
+data class TimePickerState(
+    val hour: Int = 0,
+    val minute: Int = 0,
+    val period: String = AM
+) {
+    companion object {
+
+        fun parseTimeToPickerState(time: String): TimePickerState {
+            return try {
+                val formatter = DateTimeFormatter.ofPattern("HH:mm:ss", Locale.ENGLISH)
+                val parsedTime = LocalTime.parse(time, formatter)
+
+                val hour24 = parsedTime.hour
+                val minute = parsedTime.minute
+                val period = if (hour24 < 12) AM else PM
+
+                val hour12 = when {
+                    hour24 == 0 -> 12
+                    hour24 > 12 -> hour24 - 12
+                    else -> hour24
+                }
+
+                TimePickerState(hour = hour12, minute = minute, period = period)
+            } catch (e: Exception) {
+                TimePickerState() // fallback: 12:00 AM
+            }
+        }
+    }
 }

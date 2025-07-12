@@ -1,19 +1,15 @@
 package leegroup.module.alarm.ui.screens.setup
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -23,10 +19,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -39,7 +33,10 @@ import leegroup.module.alarm.ui.screens.components.TimePickerState
 import leegroup.module.alarm.ui.screens.components.TimePickerWheel
 import leegroup.module.alarm.ui.screens.components.getAlarmRepeatDisplayText
 import leegroup.module.alarm.ui.screens.setup.components.AlarmSetupAudioBottomSheet
+import leegroup.module.alarm.ui.screens.setup.components.AlarmSetupItemLabel
+import leegroup.module.alarm.ui.screens.setup.components.AlarmSetupItemView
 import leegroup.module.alarm.ui.screens.setup.components.AlarmSetupRepeatBottomSheet
+import leegroup.module.alarm.ui.screens.setup.components.AlarmSetupSnoozeView
 import leegroup.module.core.extensions.compose.collectAsEffect
 import leegroup.module.designsystem.components.BaseScreen
 import leegroup.module.designsystem.components.CenterTopAppBar
@@ -226,54 +223,6 @@ private fun AlarmSetupItemRepeat(
 }
 
 @Composable
-private fun AlarmSetupItemLabel(
-    modifier: Modifier = Modifier,
-    value: String,
-    onTextChange: (String) -> Unit
-) {
-    Row(
-        modifier = modifier,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(
-            text = stringResource(R.string.label),
-            style = MaterialTheme.typography.bodyMedium,
-        )
-
-        BasicTextField(
-            value = value,
-            onValueChange = onTextChange,
-            singleLine = true,
-            textStyle = MaterialTheme.typography.bodyMedium.copy(
-                color = Color.White,
-                textAlign = TextAlign.End
-            ),
-            cursorBrush = SolidColor(Color.Gray),
-            modifier = Modifier
-                .padding(horizontal = 8.dp)
-                .weight(1f),
-            decorationBox = { innerTextField ->
-                Box(
-                    modifier = Modifier.fillMaxWidth(),
-                    contentAlignment = Alignment.CenterEnd // aligns both text and placeholder to end
-                ) {
-                    if (value.isEmpty()) {
-                        Text(
-                            text = stringResource(R.string.optional),
-                            style = MaterialTheme.typography.bodyMedium.copy(
-                                color = Color.Gray,
-                                textAlign = TextAlign.End
-                            )
-                        )
-                    }
-                    innerTextField()
-                }
-            }
-        )
-    }
-}
-
-@Composable
 private fun AlarmSetupItemAudio(
     modifier: Modifier = Modifier,
     audio: AlarmAudioModel?,
@@ -285,59 +234,6 @@ private fun AlarmSetupItemAudio(
         value = audio?.title.orEmpty(),
         onItemClick = onItemClick
     )
-}
-
-@Composable
-private fun AlarmSetupItemView(
-    modifier: Modifier = Modifier,
-    title: String,
-    value: String,
-    onItemClick: () -> Unit = {}
-) {
-    Row(
-        modifier = modifier.clickable {
-            onItemClick()
-        },
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(
-            text = title,
-            style = MaterialTheme.typography.bodyMedium,
-            maxLines = 1,
-        )
-        Text(
-            modifier = Modifier
-                .padding(end = 8.dp, start = 16.dp)
-                .weight(1f),
-            text = value,
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f),
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-            textAlign = TextAlign.End
-        )
-    }
-}
-
-@Composable
-private fun AlarmSetupSnoozeView(
-    modifier: Modifier = Modifier, enabled: Boolean, onCheckedChange: (Boolean) -> Unit
-) {
-    Row(
-        modifier = modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(
-            text = stringResource(R.string.snooze),
-            modifier = Modifier.weight(1f),
-            style = MaterialTheme.typography.bodyMedium
-        )
-
-        Switch(
-            checked = enabled,
-            onCheckedChange = onCheckedChange,
-            modifier = Modifier.padding(start = 8.dp)
-        )
-    }
 }
 
 private sealed interface AlarmSetupBottomSheet {
