@@ -25,7 +25,7 @@ android {
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.app.androidcompose"
+        applicationId = "com.app.alarm.me"
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
@@ -38,7 +38,7 @@ android {
     signingConfigs {
         create(release) {
             // Remember to edit signing.properties to have the correct info for release build.
-            storeFile = file("../config/release.keystore")
+            storeFile = file("../config/release.jks")
             storePassword = signingProperties.getProperty("KEYSTORE_PASSWORD") as String
             keyPassword = signingProperties.getProperty("KEY_PASSWORD") as String
             keyAlias = signingProperties.getProperty("KEY_ALIAS") as String
@@ -85,7 +85,6 @@ android {
         }
 
         create(prod) {
-            applicationIdSuffix = ".prod"
         }
     }
 
